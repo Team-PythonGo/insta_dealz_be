@@ -1,8 +1,16 @@
-# api-quick-start
+# Insta Dealz Back-end
 
-Template Project for starting up CRUD API with Django Rest Framework
+**Contributor**: Arthur Lozano Jr, Brandon Mizutani, David Waiganjo, Wenhao Piao
 
-## Customization Steps
+### Project idea
+
+### [Project management](https://github.com/orgs/Team-PythonGo/projects/1)
+
+### Wire Frame
+
+![Wire Frame](assets/wireframe.png)
+
+### Customization Steps for Django Rest Framework
 
 - DO NOT migrate yet
 - add additional dependencies as needed
