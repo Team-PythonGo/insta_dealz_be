@@ -3,8 +3,12 @@ from django.db import models
 
 
 class Product(models.Model):
-    image = models.ImageField(default="")
+    image = models.CharField(default="",max_length=256)
     name = models.CharField(max_length=256)
+    description = models.TextField(default="")
+    details = models.TextField(default="")
+    price = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.name
