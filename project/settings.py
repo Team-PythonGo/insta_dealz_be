@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'instadealz.middleware.Auth0Middleware',
     'django.middleware.security.SecurityMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -161,7 +162,8 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
+        # "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
     ],
@@ -169,3 +171,17 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = tuple(env.list("ALLOWED_ORIGINS"))
 CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
+
+# JWT
+
+AUTH0_DOMAIN = env.str('AUTH0_DOMAIN')
+AUTH0_AUDIENCE = env.str('AUTH0_AUDIENCE')
+
+SIMPLE_JWT = {
+    'ALGORITHM': 'RS256',
+    'JWK_URL': f'https://{AUTH0_DOMAIN}/.well-known/jwks.json',
+    'AUDIENCE': AUTH0_AUDIENCE,
+    'ISSUER': f'https://{AUTH0_DOMAIN}/',
+    'USER_ID_CLAIM': 'sub',
+    'AUTH_TOKEN_CLASSES': ('authz.tokens.Auth0Token',),
+}

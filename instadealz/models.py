@@ -8,8 +8,7 @@ class Product(models.Model):
     description = models.TextField(default="")
     details = models.TextField(default="")
     price = models.IntegerField(default=0)
-    # owner = models.ForeignKey(
-    #     get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+    stock = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
